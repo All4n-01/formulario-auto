@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestión de Autos</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Gestión de Autos</h1>
+  <form id="autoForm" class="formulario">
+    <label  for="patente">Patente:</label>
+    <input class="texto" type="text" id="patente" required><br>
+    <label  for="modelo">Modelo:</label>
+    <input class="texto" type="text" id="modelo" required><br>
+    <label  for="marca">Marca:</label>
+    <input class="texto" type="text" id="marca" required><br>
+    <label  for="año">Año:</label>
+    <input class="texto" type="number" id="año" required><br>
+    <button class="agregar" type="submit" id="agregar">Agregar Auto</button>
+  </form>
+  <div id="autosList">
+    <!-- Aquí se mostrarán los autos ingresados -->
+  </div>
+
+
+  <script>
+    // Función para guardar el auto en localStorage
+    function guardarAuto(auto) {
+      let autos = JSON.parse(localStorage.getItem('autos')) || [];
+      autos.push(auto);
+      localStorage.setItem('autos', JSON.stringify(autos));
+    }
+
+    //funcion para eliminar el auto seleccionado
+    function eliminarAuto(index) {
+        let autos = JSON.parse(localStorage.getItem('autos')) || [];
+        autos.splice(index,1);
+        localStorage.setItem('autos',JSON.stringify(autos));
+        mostrarAutos();
+    }
+
+    // Función para mostrar los autos en la página
+    function mostrarAutos() {
+      let autos = JSON.parse(localStorage.getItem('autos')) || [];
+      let autosListDiv = document.getElementById('autosList');
+      autosListDiv.innerHTML = '';
+      autos.forEach((auto,index) => {
+        autosListDiv.innerHTML += `
+          <div>
+            <p>Patente: ${auto.patente}</p>
+            <p>Modelo: ${auto.modelo}</p>
+            <p>Marca: ${auto.marca}</p>
+            <p>Año: ${auto.año}</p>
+            <button onclick="eliminarAuto(${index})">Eliminar </button>
+          </div>
+        `;
+      });
+    }
+
+    // Evento submit del formulario
+    document.getElementById('autoForm').addEventListener('submit', function(event) {
+      event.preventDefault();
+      let patente = document.getElementById('patente').value;
+      let modelo = document.getElementById('modelo').value;
+      let marca = document.getElementById('marca').value;
+      let año = document.getElementById('año').value;
+      let auto = { patente, modelo, marca, año };
+      guardarAuto(auto);
+      mostrarAutos();
+      // Limpiar formulario después de agregar el auto
+      this.reset();
+    });
+
+    // Mostrar autos al cargar la página
+    mostrarAutos();
+  </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+.formulario{
+    
+    width: 20%;
+    margin: auto;
+    text-align: left;
+
+}
+
+.texto{
+    margin: 12px 12px;
+    width: initial;
+    
+
+}
+
+label{
+    margin: 0 20px;
+    font-size: 14px;
+    font-weight: 400;
+    width: 50px;
+    display: flex;
+}
+
+h1{
+    text-align: center;
+}
+.agregar {
+    margin: auto;
+    display: flex;
+}
