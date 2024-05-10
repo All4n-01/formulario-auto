@@ -1,30 +1,53 @@
+body{
+    background: #f805;
+}
 .formulario{
-    
-    width: 20%;
+    background:#524;
+    width: 25%;
     margin: auto;
-    text-align: left;
+    text-align: center;
 
 }
+.inicio{
+    background: #aaf0;
+    height: 150px;
 
+    
+    
+}
 .texto{
     margin: 12px 12px;
     width: initial;
+    
     
 
 }
 
 label{
-    margin: 0 20px;
+    margin: 0 auto;
     font-size: 14px;
     font-weight: 400;
     width: 50px;
     display: flex;
+    color: #7d0;
 }
 
 h1{
     text-align: center;
+    padding: 55px;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 400;
+    font-style: italic;
+    color: #a00;
 }
 .agregar {
     margin: auto;
     display: flex;
+    
+}
+input{
+    border-width: 2px 0 0 2px;
+    border-color: #fff;
+    background: #0002;
+    color: #7d0;
 }
